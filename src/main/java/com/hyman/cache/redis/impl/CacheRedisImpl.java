@@ -17,7 +17,6 @@ import com.alibaba.fastjson.serializer.JSONSerializer;
 import com.alibaba.fastjson.serializer.SerializeWriter;
 import com.hyman.cache.CacheService;
 import com.hyman.cache.Constants;
-import com.hyman.cache.RootNamespace;
 
 @Service
 public class CacheRedisImpl implements CacheService {
@@ -29,7 +28,7 @@ public class CacheRedisImpl implements CacheService {
 	public String generateCacheKey(String namespace, Object... keys) {
 		StringBuffer out=new StringBuffer();
 		out.append(namespace);
-		out.append(RootNamespace.NAMESPACE_SEPARATOR);
+		out.append(Constants.REDIS_NAMESPACE_SEPARATOR);
 		for(int i=0;i<keys.length;i++){
 			out.append(keys[i]);
 			if(i!=keys.length-1){				
